@@ -8,25 +8,24 @@ public class EulerTask implements Callable<Long> {
     private long sum;
     private long max;
 
-    public EulerTask() {
-
+    public EulerTask(long max) {
+        this.max = max;
     }
 
     @Override
     public Long call() throws Exception {
         long help = 1;
+        long help2 = 0;
+        sum = 0;
 
         while (fibNum < max){
-            if(fibNum % 2 == 0) {
+            if(fibNum % 2 == 0 && fibNum < 4_000_000) {
                 sum += fibNum;
             }
 
-
-            fibNum = fibNum + help;
+            fibNum = help + help2;
+            help2 = help;
             help = fibNum;
-
-            System.out.println(fibNum);
-
         }
 
         return sum;
